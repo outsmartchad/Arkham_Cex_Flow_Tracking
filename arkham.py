@@ -430,28 +430,24 @@ if __name__ == "__main__":
             print("Checking the timeout 1h, 4h, 12h, 3d...")
             if (curTime - lastTime_1h).seconds > 3600: # if the last time is 1 hour ago, then call the function
                 print("Running 1h...")
-                checkNetFlowByTimeframe('1h')
                 timeout['1h'] = curTimeFormat
-                checkNetFlowByTimeframe('1h')
                 checked = True
+                checkNetFlowByTimeframe('1h')
             if (curTime - lastTime_4h).seconds > 14400: # if the last time is 4 hours ago, then call the function
                 print("Running 4h...")
-                checkNetFlowByTimeframe('4h')
                 timeout['4h'] = curTimeFormat
-                checkNetFlowByTimeframe('4h')
                 checked = True
+                checkNetFlowByTimeframe('4h')
             if (curTime - lastTime_12h).seconds > 43200: # if the last time is 12 hours ago, then call the function
                 print("Running 12h...")
-                checkNetFlowByTimeframe('12h')
                 timeout['12h'] = curTimeFormat
-                checkNetFlowByTimeframe('12h')
                 checked = True
+                checkNetFlowByTimeframe('12h')
             if (curTime - lastTime_3d).days > 3: # if the last time is 3 days ago, then call the function
                 print("Running 3d...")
-                checkNetFlowByTimeframe('3d')
                 timeout['3d'] = curTimeFormat
-                checkNetFlowByTimeframe('3d')
                 checked = True
+                checkNetFlowByTimeframe('3d')
 
 
         # write the dict to the timeout.json file
@@ -459,7 +455,9 @@ if __name__ == "__main__":
             with open('timeout.json', 'w') as f:
                 json.dump(timeout, f)
                 f.close()
-        else: time.sleep(1)
+            time.sleep(3)
+        else: 
+            time.sleep(1)
         # repeat the process
 
     # i will put it into the while true loop
